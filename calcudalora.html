@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+</head>
+<style>
+    body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: cyan;
+}
+
+.container{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.primary{
+    width: 600px;
+    height: 600px;
+    background-color: rgb(192, 239, 249);
+    padding: 25px;
+    border: 3px solid black;
+    border-radius: 50px;
+}
+</style>
+<body>
+    <center><h1 class="titulo"><b>SIMULADOR FINANCEIRO</b></h1></center>
+    <div class="container">
+        <div class="primary">
+    <h2> Insira seu lucro mensal: </h2> <input type="Number" id="input_lucrom"> <br><br>
+    <h2> Insira suas entradas mensais: </h2> <input type="number" id="input_entradasm"> <br><br>
+    <h3> Insira suas vendas mensais: </h3> <input type="number" id="input_vendasm"> <br><br><br>
+    <button onclick="resultado()"> Quanto poderia estar ganhando </button>
+    <br><br><br>
+    <div id="solucao1"></div>
+    <div id="solucao2"></div>
+    <div id="solucao3"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function resultado(){
+        var lucro = Number(input_lucrom.value);
+        var entradas = Number(input_entradasm.value);
+        var vendas = Number(input_vendasm.value);
+        var calc1 = entradas - vendas;
+        var calc2 = lucro/vendas;
+        var calc3 = (vendas/entradas)*100;
+        var calc4 = vendas+(vendas*0.60);
+        var calc5 = lucro+(lucro*0.60);
+        solucao1.innerHTML = ``
+        solucao2.innerHTML = ``
+        solucao3.innerHTML = ``
+
+        if (calc3 < 90){
+            solucao1.innerHTML = `Esse é seu lucro por pessoa <b>R$${calc2}</b>, essa é sua taxa de conversão <b>${calc3}%</b>
+             e esse é o número de pessoas que saem sem comprar nada <b>${calc1}</b><br>`
+             if (calc3 < 90){
+                solucao3.innerHTML += `Conosco sua média de vendas será cerca de <b>${calc4}</b>, podemos aumentar
+                 sua taxa de conversão em até <b>90%</b> e seus lucros em até <b>R$${calc5}</b>`
+             }
+        }
+
+        else{
+            {solucao2.innerHTML = `Esse é seu lucro por pessoa <b>R$${calc2}</b>, essa é sua taxa de conversão <b>${calc3}%</b>
+             e esse é o número de pessoas que saem sem comprar nada <b>${calc1}</b><br>`
+
+            if(calc3 >= 90){ solucao3.innerHTML += `Parabéns sua taxa de conversão está muito boa, mas podemos melhorar ainda mais!`}
+        }
+        }
+    }
+
+
+
+</script>
